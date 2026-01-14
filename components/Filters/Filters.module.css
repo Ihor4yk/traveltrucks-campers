@@ -1,0 +1,117 @@
+.filters {
+  width: 488px;
+  padding-top: 48px;
+  padding-left: 64px;
+}
+
+.block {
+  width: 360px;
+}
+
+.label {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #6C717B;
+}
+
+.inputWrapper {
+  position: relative;
+  margin-top: 8px;
+}
+
+
+.input {
+  width: 100%;
+  height: 56px;
+  border: none;
+  border-radius: 12px;
+  padding: 18px 14px 14px 46px;
+  background-color: #F7F7F7;
+  box-sizing: border-box;
+
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #101828;
+}
+
+.input::placeholder {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #6C717B;
+}
+
+.iconLocation {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  left: 18px;
+  top: 50%;
+  color: #6C717B;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.input:focus {
+  outline: none;
+}
+
+.inputWrapper:has(.input:not(:placeholder-shown)) .iconLocation {
+  color: #101828;
+}
+
+.filtersTitle {
+  margin-top: 40px;
+  margin-bottom: 32px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #475467;
+}
+
+.subtitle {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1.2;
+  color: #101828;
+}
+
+.subtitleWrapper {
+  position: relative;
+  padding-bottom: 48px;
+}
+
+.subtitleWrapper::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  bottom: 24px;
+  background-color: #DADDE1;
+}
+
+.grid {
+  display: flex;
+  gap: 8px 12px;
+  flex-wrap: wrap;
+}
+
+.block:not(:last-of-type) .grid {
+  margin-bottom: 32px;
+}
+
+.searchButton {
+  width: 166px;
+  height: 56px;
+  margin-top: 40px;
+  border-radius: 200px;
+  background-color: #E44848;
+  border: none;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: -0.005em;
+  color: #FFFFFF;
+}
