@@ -9,11 +9,21 @@
   background-color: transparent;
   border: 1px solid #dadde1;
   border-radius: 12px;
+  cursor: pointer;
   transition: border-color 250ms linear;
 }
 
+.item:hover {
+  border-color: #a0a0a0;
+}
+
 .active {
-  border-color: #e44848;
+  border-color: #E44848;
+}
+
+.active {
+  border-color: #E44848;
+  box-shadow: 0 0 0 1px #E44848;
 }
 
 .label {

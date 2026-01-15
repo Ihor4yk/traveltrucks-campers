@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import styles from "./CamperCard.module.css";
+import css from "./CamperCard.module.css";
 import { Camper } from "@/types/camper";
 import { Icon } from "../common/Icon/Icon";
 
@@ -37,127 +37,121 @@ export default function CamperCard({ camper, isFavorite, onToggleFavorite }: Cam
   } = camper;
 
   return (
-    <article className={styles.card}>
-      {/* IMAGE */}
-      <img src={gallery?.[0]?.thumb || "/placeholder.jpg"} alt={name} className={styles.image} />
+    <article className={css.card}>
+      <img src={gallery?.[0]?.thumb || "/placeholder.jpg"} alt={name} className={css.image} />
 
-      <div className={styles.content}>
-        {/* HEADER */}
-        <header className={styles.header}>
-          <h2 className={styles.title}>{name}</h2>
+      <div className={css.content}>
+        <header className={css.header}>
+          <h2 className={css.title}>{name}</h2>
 
-          <div className={styles.priceBox}>
-            <span className={styles.price}>€{price.toFixed(2)}</span>
+          <div className={css.priceBox}>
+            <span className={css.price}>€{price.toFixed(2)}</span>
 
             <button
               type="button"
               onClick={() => onToggleFavorite(id)}
-              className={`${styles.favorite} ${isFavorite ? styles.active : ""}`}
+              className={`${css.favorite} ${isFavorite ? css.active : ""}`}
               aria-label="Add to favorites"
             >
-              <Icon name={"icon-like"} className={styles.favoriteIcon} />
+              <Icon name={"icon-like"} className={css.favoriteIcon} />
             </button>
           </div>
         </header>
 
-        {/* META */}
-        <div className={styles.meta}>
-          <span className={styles.rating}>
-            <Icon name="icon-rating" className={styles.ratingIcon} />
+        <div className={css.meta}>
+          <span className={css.rating}>
+            <Icon name="icon-rating" className={css.ratingIcon} />
             {rating} ({reviews.length} Reviews)
           </span>
 
-          <span className={styles.location}>
-            <Icon name="icon-map" className={styles.mapIcon} />
+          <span className={css.location}>
+            <Icon name="icon-map" className={css.mapIcon} />
             {location}
           </span>
         </div>
 
-        {/* DESCRIPTION */}
-        <p className={styles.description}>{description}</p>
+        <p className={css.description}>{description}</p>
 
-        {/* FEATURES */}
-        <ul className={styles.features}>
+        <ul className={css.features}>
           {transmission && (
-            <li className={styles.featureItem}>
-              <Icon name="icon-automatic" className={styles.featureIcon} />
+            <li className={css.featureItem}>
+              <Icon name="icon-automatic" className={css.featureIcon} />
               {capitalize(transmission)}
             </li>
           )}
 
           {engine && (
-            <li className={styles.featureItem}>
-              <Icon name="icon-petrol" className={styles.featureIcon} />
+            <li className={css.featureItem}>
+              <Icon name="icon-petrol" className={css.featureIcon} />
               {capitalize(engine)}
             </li>
           )}
 
           {AC && (
-            <li className={styles.featureItem}>
-              <Icon name="icon-ac" className={styles.featureIcon} />
+            <li className={css.featureItem}>
+              <Icon name="icon-ac" className={css.featureIcon} />
               AC
             </li>
           )}
 
           {bathroom && (
-            <li className={styles.featureItem}>
-              <Icon name="icon-bathroom" className={styles.featureIcon} />
+            <li className={css.featureItem}>
+              <Icon name="icon-bathroom" className={css.featureIcon} />
               Bathroom
             </li>
           )}
 
           {kitchen && (
-            <li className={styles.featureItem}>
-              <Icon name="icon-kitchen" className={styles.featureIcon} />
+            <li className={css.featureItem}>
+              <Icon name="icon-kitchen" className={css.featureIcon} />
               Kitchen
             </li>
           )}
 
           {TV && (
-            <li className={styles.featureItem}>
-              <Icon name="icon-tv" className={styles.featureIcon} />
+            <li className={css.featureItem}>
+              <Icon name="icon-tv" className={css.featureIcon} />
               TV
             </li>
           )}
 
           {radio && (
-            <li className={styles.featureItem}>
-              <Icon name="icon-radio" className={styles.featureIcon} />
+            <li className={css.featureItem}>
+              <Icon name="icon-radio" className={css.featureIcon} />
               Radio
             </li>
           )}
 
           {refrigerator && (
-            <li className={styles.featureItem}>
-              <Icon name="icon-refrigerator" className={styles.featureIcon} />
+            <li className={css.featureItem}>
+              <Icon name="icon-refrigerator" className={css.featureIcon} />
               Refrigerator
             </li>
           )}
 
           {microwave && (
-            <li className={styles.featureItem}>
-              <Icon name="icon-microwave" className={styles.featureIcon} />
+            <li className={css.featureItem}>
+              <Icon name="icon-microwave" className={css.featureIcon} />
               Microwave
             </li>
           )}
 
           {gas && (
-            <li className={styles.featureItem}>
-              <Icon name="icon-gas" className={styles.featureIcon} />
+            <li className={css.featureItem}>
+              <Icon name="icon-gas" className={css.featureIcon} />
               Gas
             </li>
           )}
 
           {water && (
-            <li className={styles.featureItem}>
-              <Icon name="icon-water" className={styles.featureIcon} />
+            <li className={css.featureItem}>
+              <Icon name="icon-water" className={css.featureIcon} />
               Water
             </li>
           )}
         </ul>
 
-        {/* ACTION */}
-        <Link href={`/catalog/${id}`} className={styles.showMore}>
+        <Link href={`/catalog/${id}`} className={css.showMore}>
           Show more
         </Link>
       </div>

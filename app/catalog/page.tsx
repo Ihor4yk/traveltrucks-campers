@@ -1,30 +1,14 @@
 "use client";
 
-import React, { useEffect } from "react";
 import CamperCard from "@/components/CamperCard/CamperCard";
 import Filters from "@/components/Filters/Filters";
-import { Camper } from "@/types/camper";
 import css from "./CatalogPage.module.css";
-
-// тимчасово — пізніше заміниш на Zustand
-import { getCampers } from "@/services/campersApi";
+import { useCampersStore } from "@/lib/store/campersStore";
 
 export default function CatalogPage() {
-  const [campers, setCampers] = React.useState<Camper[]>([]);
-  const [favorites, setFavorites] = React.useState<string[]>([]);
-
-  useEffect(() => {
-    async function fetchCampers() {
-      const data = await getCampers();
-      setCampers(data.items);
-    }
-
-    fetchCampers();
-  }, []);
-
-  const toggleFavorite = (id: string) => {
-    setFavorites(prev => (prev.includes(id) ? prev.filter(favId => favId !== id) : [...prev, id]));
-  };
+  const campers = useCampersStore(s => s.campers);
+  const toggleFavorite = useCampersStore(s => s.toggleFavorite);
+  const isFavorite = useCampersStore(s => s.isFavorite);
 
   return (
     <div className={css.container}>
@@ -35,7 +19,7 @@ export default function CatalogPage() {
           <CamperCard
             key={camper.id}
             camper={camper}
-            isFavorite={favorites.includes(camper.id)}
+            isFavorite={isFavorite(camper.id)}
             onToggleFavorite={toggleFavorite}
           />
         ))}
