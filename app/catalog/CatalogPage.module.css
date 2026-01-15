@@ -1,0 +1,12 @@
+.container {
+  width: 1440px;
+  display: flex;
+  gap: 64px;
+  padding: 48px 64px 52px;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
