@@ -1,6 +1,7 @@
 .card {
-  width: 888px;
   display: flex;
+  flex-direction: row;
+  width: 888px;
   gap: 24px;
   padding: 24px;
   margin-bottom: 40px;
@@ -19,6 +20,8 @@
 .content {
   display: flex;
   flex-direction: column;
+  flex-grow: 1;
+  min-width: 0;
 }
 
 .header {
@@ -94,6 +97,13 @@
   line-height: 1.5;
   margin: 24px 0;
   color: #475467;
+
+  display: block;
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
 }
 
 .features {

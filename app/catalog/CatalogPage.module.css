@@ -3,17 +3,20 @@
   display: flex;
   gap: 64px;
   padding: 48px 64px 52px;
+  min-width: 0;
 }
 
 .section {
   display: flex;
   flex-direction: column;
+  min-width: 0;
 }
 
 .cardsWrapper {
   display: flex;
   flex-direction: column;
   position: relative;
+  min-width: 0;
 }
 
 .loadMoreWrapper {
