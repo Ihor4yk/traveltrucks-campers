@@ -8,5 +8,78 @@
 .section {
   display: flex;
   flex-direction: column;
-  gap: 32px;
+}
+
+.cardsWrapper {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.loadMoreWrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.loadMoreButton {
+  width: 145px;
+  height: 56px;
+  border-radius: 200px;
+  border: 1px solid #DADDE1;
+  background-color: transparent;
+
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: -0.005em;
+  color: #101828;
+}
+
+.loadMoreButton:hover:not(:disabled) {
+  border: 1px solid #D84343;
+}
+
+.loaderWrapper {
+  width: 100%;
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loader {
+  position: relative;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border-top: 4px solid #1E40AF;
+  border-right: 4px solid transparent;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loader::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border-left: 4px solid #FACC15;
+  border-bottom: 4px solid transparent;
+  animation: rotation 0.5s linear infinite reverse;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }

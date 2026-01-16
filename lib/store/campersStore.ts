@@ -2,10 +2,15 @@ import { create } from "zustand";
 import { Camper } from "@/types/camper";
 import { getCampers } from "@/services/campersApi";
 
+type EquipmentKey = keyof Pick<
+  Camper,
+  "AC" | "kitchen" | "TV" | "bathroom" | "radio" | "refrigerator" | "microwave" | "gas" | "water"
+>;
+
 type Filters = {
   location: string;
-  equipment: string[];
-  vehicleType: string;
+  equipment: EquipmentKey[];
+  vehicleType: Camper["form"] | "";
 };
 
 type CampersStore = {
@@ -13,12 +18,12 @@ type CampersStore = {
   filters: Filters;
   page: number;
   isLoading: boolean;
-
+  total: number;
   favorites: string[];
 
   setLocation: (value: string) => void;
-  toggleEquipment: (value: string) => void;
-  setVehicleType: (value: string) => void;
+  toggleEquipment: (value: EquipmentKey) => void;
+  setVehicleType: (value: Camper["form"] | "") => void;
 
   toggleFavorite: (id: string) => void;
   isFavorite: (id: string) => boolean;
@@ -30,6 +35,7 @@ export const useCampersStore = create<CampersStore>((set, get) => ({
   campers: [],
   page: 1,
   isLoading: false,
+  total: 0,
 
   filters: {
     location: "",
@@ -39,11 +45,7 @@ export const useCampersStore = create<CampersStore>((set, get) => ({
 
   favorites: typeof window !== "undefined" ? JSON.parse(localStorage.getItem("favorites") || "[]") : [],
 
-  setLocation: value =>
-    set(state => ({
-      filters: { ...state.filters, location: value },
-    })),
-
+  setLocation: value => set(state => ({ filters: { ...state.filters, location: value } })),
   toggleEquipment: value =>
     set(state => {
       const exists = state.filters.equipment.includes(value);
@@ -54,40 +56,36 @@ export const useCampersStore = create<CampersStore>((set, get) => ({
         },
       };
     }),
+  setVehicleType: value => set(state => ({ filters: { ...state.filters, vehicleType: value } })),
 
-  setVehicleType: value =>
-    set(state => ({
-      filters: { ...state.filters, vehicleType: value },
-    })),
-
-  toggleFavorite: id =>
+  toggleFavorite: id => {
     set(state => {
       const updated = state.favorites.includes(id)
         ? state.favorites.filter(favId => favId !== id)
         : [...state.favorites, id];
-
       localStorage.setItem("favorites", JSON.stringify(updated));
-
       return { favorites: updated };
-    }),
-
+    });
+  },
   isFavorite: id => get().favorites.includes(id),
 
   fetchCampers: async (reset = false) => {
     const { filters, page } = get();
-
     set({ isLoading: true });
 
+    const nextPage = reset ? 1 : page;
     const data = await getCampers({
+      page: nextPage,
+      limit: 4,
       location: filters.location,
       vehicleType: filters.vehicleType,
       equipment: filters.equipment,
-      page: reset ? 1 : page,
     });
 
     set(state => ({
       campers: reset ? data.items : [...state.campers, ...data.items],
-      page: reset ? 2 : state.page + 1,
+      page: nextPage + 1,
+      total: data.total,
       isLoading: false,
     }));
   },

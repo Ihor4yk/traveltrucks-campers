@@ -44,8 +44,8 @@ export default function Filters() {
           <FilterItem
             icon="icon-kitchen"
             label="Kitchen"
-            active={equipment.includes("Kitchen")}
-            onClick={() => toggleEquipment("Kitchen")}
+            active={equipment.includes("kitchen")}
+            onClick={() => toggleEquipment("kitchen")}
           />
           <FilterItem
             icon="icon-tv"
@@ -56,8 +56,8 @@ export default function Filters() {
           <FilterItem
             icon="icon-bathroom"
             label="Bathroom"
-            active={equipment.includes("Bathroom")}
-            onClick={() => toggleEquipment("Bathroom")}
+            active={equipment.includes("bathroom")}
+            onClick={() => toggleEquipment("bathroom")}
           />
         </ul>
       </div>
@@ -71,14 +71,14 @@ export default function Filters() {
           <FilterItem
             icon="icon-van"
             label="Van"
-            active={vehicleType === "van"}
-            onClick={() => setVehicleType("van")}
+            active={vehicleType === "panelTruck"}
+            onClick={() => setVehicleType("panelTruck")}
           />
           <FilterItem
             icon="icon-fully-integrated"
             label="Fully Integrated"
-            active={vehicleType === "fully"}
-            onClick={() => setVehicleType("fully")}
+            active={vehicleType === "fullyIntegrated"}
+            onClick={() => setVehicleType("fullyIntegrated")}
           />
           <FilterItem
             icon="icon-alcove"
