@@ -1,24 +1,13 @@
-import axios from "axios";
 import { Camper, CampersResponse } from "@/types/camper";
+import { api } from "./api";
 
-const api = axios.create({
-  baseURL: "https://66b1f8e71ca8ad33d4f5f63e.mockapi.io",
-});
-
-type GetCampersParams = {
+interface GetCampersParams {
   page?: number;
   limit?: number;
   location?: string;
   vehicleType?: string;
-  equipment?: string[]; // масив рядків
-};
-
-type CampersQueryParams = {
-  page: number;
-  limit: number;
-  location?: string;
-  form?: string; // для vehicleType
-} & Record<string, boolean>; // для equipment
+  equipment?: string[];
+}
 
 export const getCampers = async ({
   page = 1,
@@ -27,7 +16,6 @@ export const getCampers = async ({
   vehicleType,
   equipment,
 }: GetCampersParams): Promise<{ items: Camper[]; total: number }> => {
-  // Основні параметри
   const baseParams = {
     page,
     limit,
@@ -35,7 +23,6 @@ export const getCampers = async ({
     ...(vehicleType ? { form: vehicleType } : {}),
   };
 
-  // Параметри для equipment
   const equipmentParams: Record<string, boolean> = {};
   if (equipment && equipment.length > 0) {
     equipment.forEach(eq => {
@@ -45,10 +32,10 @@ export const getCampers = async ({
 
   const params = { ...baseParams, ...equipmentParams };
 
-  const { data } = await api.get<CampersResponse>("/campers", { params });
+  const { data = { items: [], total: 0 } } = await api.get<CampersResponse>("/campers", { params });
 
   return {
-    items: data.items,
-    total: data.total,
+    items: data.items || [],
+    total: data.total || 0,
   };
 };

@@ -1,0 +1,31 @@
+import { Camper } from "@/types/camper";
+import axios, { AxiosError } from "axios";
+
+export const api = axios.create({
+  baseURL: "https://66b1f8e71ca8ad33d4f5f63e.mockapi.io",
+  // I tried to remove the error in the console, but it won't work because I need to fix the code on the backend, because the backend should return an empty array when filtering campers and it returns an error!
+  // But in general everything works)
+  validateStatus: status => {
+    return status < 500; // any status less than 500 is considered a "success"
+  },
+});
+
+api.interceptors.response.use(
+  response => response,
+  (error: AxiosError) => {
+    // 404 for /campers = empty list
+    if (error.response?.status === 404 && error.config?.url === "/campers") {
+      return Promise.resolve({
+        data: {
+          items: [] as Camper[],
+          total: 0,
+        },
+        status: 200,
+        statusText: "OK",
+        headers: {},
+        config: error.config,
+      });
+    }
+    return Promise.reject(error);
+  },
+);

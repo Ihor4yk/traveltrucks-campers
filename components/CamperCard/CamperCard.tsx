@@ -4,6 +4,7 @@ import Link from "next/link";
 import css from "./CamperCard.module.css";
 import { Camper } from "@/types/camper";
 import { Icon } from "../common/Icon/Icon";
+import Image from "next/image";
 
 interface CamperCardProps {
   camper: Camper;
@@ -38,7 +39,13 @@ export default function CamperCard({ camper, isFavorite, onToggleFavorite }: Cam
 
   return (
     <article className={css.card}>
-      <img src={gallery?.[0]?.thumb || "/placeholder.jpg"} alt={name} className={css.image} />
+      <Image
+        src={gallery?.[0]?.thumb || "/placeholder.jpg"}
+        alt={name}
+        className={css.image}
+        width={292}
+        height={320}
+      />
 
       <div className={css.content}>
         <header className={css.header}>

@@ -8,12 +8,13 @@ import React from "react";
 
 export default function CatalogPage() {
   const campers = useCampersStore(s => s.campers ?? []);
-  // const campers = useCampersStore(s => s.campers);
   const fetchCampers = useCampersStore(s => s.fetchCampers);
   const toggleFavorite = useCampersStore(s => s.toggleFavorite);
   const isFavorite = useCampersStore(s => s.isFavorite);
-  const isLoading = useCampersStore(s => s.isLoading);
   const total = useCampersStore(s => s.total);
+  const isLoading = useCampersStore(s => s.isLoading);
+  const isLoadingMore = useCampersStore(s => s.isLoadingMore);
+  const hasSearched = useCampersStore(s => s.hasSearched);
 
   React.useEffect(() => {
     fetchCampers(true);
@@ -24,11 +25,23 @@ export default function CatalogPage() {
       <Filters />
 
       <div className={css.cardsWrapper}>
-        {campers.length === 0 && isLoading ? (
+        {/* Loader */}
+        {isLoading && (
           <div className={css.loaderWrapper}>
             <div className={css.loader}></div>
           </div>
-        ) : (
+        )}
+
+        {/* Empty state */}
+        {!isLoading && hasSearched && campers.length === 0 && (
+          <div className={css.emptyState}>
+            <h3>No campers found</h3>
+            <p>Try changing your filters</p>
+          </div>
+        )}
+
+        {/* Cards */}
+        {!isLoading && campers.length > 0 && (
           <section className={css.section}>
             {campers.map(camper => (
               <CamperCard
@@ -41,9 +54,10 @@ export default function CatalogPage() {
           </section>
         )}
 
-        {campers.length > 0 && campers.length < total && (
+        {/* Load More */}
+        {!isLoading && campers.length > 0 && campers.length < total && (
           <div className={css.loadMoreWrapper}>
-            {isLoading ? (
+            {isLoadingMore ? (
               <div className={css.loader}></div>
             ) : (
               <button className={css.loadMoreButton} onClick={() => fetchCampers(false)}>

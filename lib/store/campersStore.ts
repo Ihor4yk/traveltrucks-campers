@@ -7,19 +7,21 @@ type EquipmentKey = keyof Pick<
   "AC" | "kitchen" | "TV" | "bathroom" | "radio" | "refrigerator" | "microwave" | "gas" | "water"
 >;
 
-type Filters = {
+interface Filters {
   location: string;
   equipment: EquipmentKey[];
   vehicleType: Camper["form"] | "";
-};
+}
 
-type CampersStore = {
+interface CampersStore {
   campers: Camper[];
   filters: Filters;
   page: number;
-  isLoading: boolean;
   total: number;
   favorites: string[];
+  isLoading: boolean;
+  isLoadingMore: boolean;
+  hasSearched: boolean;
 
   setLocation: (value: string) => void;
   toggleEquipment: (value: EquipmentKey) => void;
@@ -29,13 +31,15 @@ type CampersStore = {
   isFavorite: (id: string) => boolean;
 
   fetchCampers: (reset?: boolean) => Promise<void>;
-};
+}
 
 export const useCampersStore = create<CampersStore>((set, get) => ({
   campers: [],
   page: 1,
-  isLoading: false,
   total: 0,
+  isLoading: false,
+  isLoadingMore: false,
+  hasSearched: false,
 
   filters: {
     location: "",
@@ -71,7 +75,12 @@ export const useCampersStore = create<CampersStore>((set, get) => ({
 
   fetchCampers: async (reset = false) => {
     const { filters, page } = get();
-    set({ isLoading: true });
+
+    if (reset) {
+      set({ isLoading: true });
+    } else {
+      set({ isLoadingMore: true });
+    }
 
     const nextPage = reset ? 1 : page;
     const data = await getCampers({
@@ -87,6 +96,8 @@ export const useCampersStore = create<CampersStore>((set, get) => ({
       page: nextPage + 1,
       total: data.total,
       isLoading: false,
+      isLoadingMore: false,
+      hasSearched: reset && data.items.length === 0,
     }));
   },
 }));

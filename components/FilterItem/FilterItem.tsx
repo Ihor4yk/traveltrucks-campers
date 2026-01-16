@@ -1,12 +1,12 @@
 import { Icon } from "../common/Icon/Icon";
 import css from "./FilterItem.module.css";
 
-type FilterItemProps = {
+interface FilterItemProps {
   icon: string;
   label: string;
   active?: boolean;
   onClick?: () => void;
-};
+}
 
 export const FilterItem = ({ icon, label, active = false, onClick }: FilterItemProps) => {
   return (
