@@ -7,14 +7,8 @@ import { useCampersStore } from "@/lib/store/campersStore";
 import React from "react";
 
 export default function CatalogPage() {
-  const campers = useCampersStore(s => s.campers ?? []);
-  const fetchCampers = useCampersStore(s => s.fetchCampers);
-  const toggleFavorite = useCampersStore(s => s.toggleFavorite);
-  const isFavorite = useCampersStore(s => s.isFavorite);
-  const total = useCampersStore(s => s.total);
-  const isLoading = useCampersStore(s => s.isLoading);
-  const isLoadingMore = useCampersStore(s => s.isLoadingMore);
-  const hasSearched = useCampersStore(s => s.hasSearched);
+  const { campers, fetchCampers, toggleFavorite, total, isLoading, isLoadingMore, hasSearched, favorites } =
+    useCampersStore(state => state);
 
   React.useEffect(() => {
     fetchCampers(true);
@@ -47,7 +41,7 @@ export default function CatalogPage() {
               <CamperCard
                 key={camper.id}
                 camper={camper}
-                isFavorite={isFavorite(camper.id)}
+                isFavorite={favorites.includes(camper.id)}
                 onToggleFavorite={toggleFavorite}
               />
             ))}

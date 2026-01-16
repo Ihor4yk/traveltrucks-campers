@@ -57,10 +57,10 @@ export default function CamperCard({ camper, isFavorite, onToggleFavorite }: Cam
             <button
               type="button"
               onClick={() => onToggleFavorite(id)}
-              className={`${css.favorite} ${isFavorite ? css.active : ""}`}
+              className={css.favorite}
               aria-label="Add to favorites"
             >
-              <Icon name={"icon-like"} className={css.favoriteIcon} />
+              <Icon name={"icon-like"} className={`${css.favoriteIcon} ${isFavorite ? css.active : ""}`} />
             </button>
           </div>
         </header>

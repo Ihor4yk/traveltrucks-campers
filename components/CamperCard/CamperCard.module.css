@@ -51,19 +51,23 @@
 }
 
 .favorite {
-  background-color: transparent;
-  border: none;
-}
-
-.favorite.active {
-  color: #e44848;
+  background: transparent;
+  border: transparent;
+  cursor: pointer;
+  padding: 0;
 }
 
 .favoriteIcon {
   width: 24px;
   height: 24px;
-  color: #101828;
-  flex-shrink: 0;
+  fill: transparent;
+  stroke: #101828;
+  transition: fill 0.2s ease, stroke 0.2s ease;
+}
+
+.favoriteIcon.active {
+  fill: #E44848;
+  stroke: #E44848;
 }
 
 .meta {
