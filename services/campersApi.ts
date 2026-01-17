@@ -9,9 +9,6 @@ interface GetCampersParams {
   equipment?: string[];
 }
 
-/**
- * Отримати список кемперів з фільтрами
- */
 export const getCampers = async ({
   page = 1,
   limit = 4,
@@ -43,10 +40,6 @@ export const getCampers = async ({
   };
 };
 
-/**
- * Отримати одного кемпера за ID
- * Повертає Camper або null, якщо не знайдено
- */
 export const getCamperById = async (id: string): Promise<Camper | null> => {
   const { data } = await api.get<Camper | null>(`/campers/${id}`);
   return data;

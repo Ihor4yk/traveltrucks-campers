@@ -16,7 +16,6 @@ api.interceptors.response.use(
     if (error.response?.status === 404) {
       const url = error.config?.url;
 
-      // Якщо запит на список кемперів, повертаємо порожній масив
       if (url === "/campers") {
         return Promise.resolve({
           data: { items: [] as Camper[], total: 0 },
@@ -27,7 +26,6 @@ api.interceptors.response.use(
         });
       }
 
-      // Якщо запит на конкретного кемпера, повертаємо null
       if (url?.startsWith("/campers/")) {
         return Promise.resolve({
           data: null,
@@ -39,7 +37,6 @@ api.interceptors.response.use(
       }
     }
 
-    // Всі інші помилки пробрасываем
     return Promise.reject(error);
   },
 );

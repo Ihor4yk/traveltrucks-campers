@@ -3,7 +3,7 @@ export interface CamperGalleryItem {
   original: string;
 }
 
-export interface CamperReview {
+export interface Review {
   reviewer_name: string;
   reviewer_rating: number;
   comment: string;
@@ -39,7 +39,7 @@ export interface Camper {
   water: boolean;
 
   gallery: CamperGalleryItem[];
-  reviews: CamperReview[];
+  reviews: Review[];
 }
 
 export interface CampersResponse {

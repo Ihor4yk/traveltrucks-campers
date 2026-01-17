@@ -1,6 +1,9 @@
 .featuresContainer {
   width: 631px;
+  margin-top: 44px;
   padding: 44px 52px;
+  border-radius: 10px;
+  background-color: #F7F7F7;
 }
 
 .amenitiesList {
