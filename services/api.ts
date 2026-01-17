@@ -13,19 +13,33 @@ export const api = axios.create({
 api.interceptors.response.use(
   response => response,
   (error: AxiosError) => {
-    // 404 for /campers = empty list
-    if (error.response?.status === 404 && error.config?.url === "/campers") {
-      return Promise.resolve({
-        data: {
-          items: [] as Camper[],
-          total: 0,
-        },
-        status: 200,
-        statusText: "OK",
-        headers: {},
-        config: error.config,
-      });
+    if (error.response?.status === 404) {
+      const url = error.config?.url;
+
+      // Якщо запит на список кемперів, повертаємо порожній масив
+      if (url === "/campers") {
+        return Promise.resolve({
+          data: { items: [] as Camper[], total: 0 },
+          status: 200,
+          statusText: "OK",
+          headers: {},
+          config: error.config,
+        });
+      }
+
+      // Якщо запит на конкретного кемпера, повертаємо null
+      if (url?.startsWith("/campers/")) {
+        return Promise.resolve({
+          data: null,
+          status: 200,
+          statusText: "OK",
+          headers: {},
+          config: error.config,
+        });
+      }
     }
+
+    // Всі інші помилки пробрасываем
     return Promise.reject(error);
   },
 );

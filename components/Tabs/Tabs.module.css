@@ -1,0 +1,35 @@
+/* .tabsSection {
+  width: 1440px;
+  margin: 0 auto;
+} */
+
+.tabsWrapper {
+  position: relative;
+  display: flex;
+  gap: 40px;
+  margin-top: 60px;
+}
+
+.tabsWrapper button {
+  position: relative;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1.2;
+  background-color: transparent;
+  border: none;
+  color: #101828;
+}
+
+.tabsLine {
+  width: 100%;
+  border: 1px solid #DADDE1;
+  margin-top: 24px;
+}
+
+.slider {
+  position: absolute;
+  bottom: -27px;
+  height: 5px;
+  background-color: #e44848;
+  transition: left 0.3s ease, width 0.3s ease;
+}
