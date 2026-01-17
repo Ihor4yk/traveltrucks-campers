@@ -1,0 +1,65 @@
+.featuresContainer {
+  width: 631px;
+  padding: 44px 52px;
+}
+
+.amenitiesList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.featureItem {
+  display: flex;
+  background-color: #F2F4F7;
+  border-radius: 100px;
+  padding: 14px 18px;
+  gap: 8px;
+  align-items: center;
+
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  text-align: center;
+  color: #101828;
+}
+
+.featureIcon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.title {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1.2;
+  margin-top: 100px;
+  color: #101828;
+}
+
+.line {
+  width: 100%;
+  border: 1px solid #DADDE1;
+  margin: 24px 0;
+}
+
+.specsList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.specsItem {
+  display: flex;
+  justify-content: space-between;
+}
+
+.label,
+.value {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  text-align: center;
+  color: #101828;
+}

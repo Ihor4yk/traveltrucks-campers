@@ -6,6 +6,7 @@ import { Camper } from "@/types/camper";
 import css from "./CamperDetails.module.css";
 import { Icon } from "../../../components/common/Icon/Icon";
 import Tabs from "@/components/Tabs/Tabs";
+import Features from "@/components/Features/Features";
 
 interface CamperDetailsProps {
   camper: Camper | null;
@@ -57,6 +58,8 @@ export default function CamperDetails({ camper }: CamperDetailsProps) {
       <p className={css.description}>{description}</p>
 
       <Tabs activeTab={activeTab} onChange={setActiveTab} />
+
+      <Features camper={camper} />
     </div>
   );
 }

@@ -119,6 +119,7 @@
 
 .featureItem {
   display: flex;
+  align-items: center;
   background-color: #F2F4F7;
   border-radius: 100px;
   padding: 14px 18px;
