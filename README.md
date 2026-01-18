@@ -9,6 +9,16 @@ The project is built with **Next.js**, **TypeScript**, and uses a ready-made bac
 
 ---
 
+## Installation & Usage
+
+```bash
+git clone https://github.com/your-username/traveltrucks-campers.git
+cd traveltrucks-campers
+npm install
+npm run dev
+
+---
+
 ## Backend API
 
 - **Base URL:**  
@@ -64,13 +74,3 @@ Global state is managed with **Zustand**:
 - Favorites
 
 Previous search results are cleared before applying new filters.
-
----
-
-## Installation & Usage
-
-```bash
-git clone https://github.com/your-username/traveltrucks-campers.git
-cd traveltrucks-campers
-npm install
-npm run dev
