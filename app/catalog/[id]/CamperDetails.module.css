@@ -80,3 +80,8 @@
   line-height: 1.5;
   color: #475467;
 }
+
+.blockTabsBooking {
+  display: flex;
+  gap: 40px;
+}

@@ -8,6 +8,7 @@ import { Icon } from "../../../components/common/Icon/Icon";
 import Tabs from "@/components/Tabs/Tabs";
 import Features from "@/components/Features/Features";
 import Reviews from "@/components/Reviews/Reviews";
+import BookingForm from "@/components/BookingForm/BookingForm";
 
 interface CamperDetailsProps {
   camper: Camper | null;
@@ -59,8 +60,12 @@ export default function CamperDetails({ camper }: CamperDetailsProps) {
       <p className={css.description}>{description}</p>
 
       <Tabs activeTab={activeTab} onChange={setActiveTab} />
-      {activeTab === "features" && <Features camper={camper} />}
-      {activeTab === "reviews" && <Reviews reviews={reviews} />}
+
+      <div className={css.blockTabsBooking}>
+        {activeTab === "features" && <Features camper={camper} />}
+        {activeTab === "reviews" && <Reviews reviews={reviews} />}
+        <BookingForm />
+      </div>
     </div>
   );
 }

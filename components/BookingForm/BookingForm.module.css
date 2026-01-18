@@ -1,0 +1,107 @@
+.bookingFormWrapper {
+  max-width: 641px;
+  /* height: 588px; */
+  padding: 44px 57px;
+  margin-top: 44px;
+  border-radius: 10px;
+  border: 1px solid #DADDE1;
+}
+
+.title {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1.2;
+  margin-bottom: 8px;
+  color: #101828;
+}
+
+.subtitle {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  margin-bottom: 24px;
+  color: #6C717B;
+}
+
+.inputWrapper,
+.datePickerWrapper {
+  margin-bottom: 14px;
+}
+
+.input {
+  width: 100%;
+  height: 60px;
+}
+
+.datePicker {
+  width: 527px;
+  height: 60px;
+}
+
+.textarea {
+  width: 100%;
+  resize: none;
+  height: 118px;
+  margin-bottom: 24px;
+}
+
+.input,
+.datePicker,
+.textarea {
+  font-family: Inter;
+  padding: 18px;
+  border-radius: 12px;
+  background-color: #F7F7F7;
+  border: none;
+  outline: none;
+
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #101828;
+}
+
+.input::placeholder,
+.datePicker::placeholder,
+.textarea::placeholder {
+  font-family: Inter;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #6C717B;
+}
+
+.input.errorInput,
+.datePicker.errorInput {
+  border: 1px solid red;
+}
+
+.errorMessage {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.5;
+  margin-top: 4px;
+  color: #C40202;
+
+}
+
+.submitButton {
+  display: block;
+  width: 166px;
+  height: 56px;
+  border-radius: 200px;
+  border: none;
+  background-color: #E44848;
+  margin: 0 auto;
+
+  font-family: Inter;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: -0.005em;
+  color: #FFFFFF;
+}
+
+.submitButton:hover {
+  background-color: #D84343;
+}
