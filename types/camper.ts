@@ -46,3 +46,12 @@ export interface CampersResponse {
   total: number;
   items: Camper[];
 }
+
+export interface GetCampersParams {
+  page: number;
+  limit: number;
+  location?: string;
+  vehicleType?: string;
+  equipment?: string[];
+  transmission?: "automatic";
+}

@@ -4,7 +4,7 @@ import { FilterItem } from "../FilterItem/FilterItem";
 import css from "./Filters.module.css";
 
 export default function Filters() {
-  const { setLocation, toggleEquipment, setVehicleType, fetchCampers } = useCampersStore();
+  const { filters, setTransmission, setLocation, toggleEquipment, setVehicleType, fetchCampers } = useCampersStore();
   const equipment = useCampersStore(s => s.filters.equipment);
   const vehicleType = useCampersStore(s => s.filters.vehicleType);
 
@@ -42,6 +42,12 @@ export default function Filters() {
             onClick={() => toggleEquipment("AC")}
           />
           <FilterItem
+            icon="icon-automatic"
+            label="Automatic"
+            active={filters.transmission === "automatic"}
+            onClick={() => setTransmission(filters.transmission === "automatic" ? undefined : "automatic")}
+          />
+          <FilterItem
             icon="icon-kitchen"
             label="Kitchen"
             active={equipment.includes("kitchen")}
@@ -72,19 +78,19 @@ export default function Filters() {
             icon="icon-van"
             label="Van"
             active={vehicleType === "panelTruck"}
-            onClick={() => setVehicleType("panelTruck")}
+            onClick={() => setVehicleType(vehicleType === "panelTruck" ? "" : "panelTruck")}
           />
           <FilterItem
             icon="icon-fully-integrated"
             label="Fully Integrated"
             active={vehicleType === "fullyIntegrated"}
-            onClick={() => setVehicleType("fullyIntegrated")}
+            onClick={() => setVehicleType(vehicleType === "fullyIntegrated" ? "" : "fullyIntegrated")}
           />
           <FilterItem
             icon="icon-alcove"
             label="Alcove"
             active={vehicleType === "alcove"}
-            onClick={() => setVehicleType("alcove")}
+            onClick={() => setVehicleType(vehicleType === "alcove" ? "" : "alcove")}
           />
         </ul>
       </div>

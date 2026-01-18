@@ -13,10 +13,6 @@
   transition: border-color 250ms linear;
 }
 
-.item:hover {
-  border-color: #a0a0a0;
-}
-
 .active {
   border-color: #E44848;
 }

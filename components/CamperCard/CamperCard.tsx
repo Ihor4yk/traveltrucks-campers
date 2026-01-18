@@ -52,7 +52,7 @@ export default function CamperCard({ camper, isFavorite, onToggleFavorite }: Cam
           <h2 className={css.title}>{name}</h2>
 
           <div className={css.priceBox}>
-            <span className={css.price}>€{price.toFixed(2)}</span>
+            <p className={css.price}>€{price.toFixed(2)}</p>
 
             <button
               type="button"
@@ -66,15 +66,15 @@ export default function CamperCard({ camper, isFavorite, onToggleFavorite }: Cam
         </header>
 
         <div className={css.meta}>
-          <span className={css.rating}>
+          <div className={css.rating}>
             <Icon name="icon-rating" className={css.ratingIcon} />
             {rating} ({reviews.length} Reviews)
-          </span>
+          </div>
 
-          <span className={css.location}>
+          <div className={css.location}>
             <Icon name="icon-map" className={css.mapIcon} />
             {location}
-          </span>
+          </div>
         </div>
 
         <p className={css.description}>{description}</p>

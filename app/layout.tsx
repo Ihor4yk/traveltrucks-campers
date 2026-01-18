@@ -8,7 +8,7 @@ export const metadata = {
   title: "TravelTrucks",
   description: "Camper rental service",
   icons: {
-    icon: "/camper-icon.jpg",
+    icon: "/favicon-ico.jpg",
   },
 };
 

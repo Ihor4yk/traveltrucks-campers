@@ -74,12 +74,12 @@ export default function Features({ camper }: FeaturesProps) {
         )}
         {microwave && (
           <li className={css.featureItem}>
-            <Icon name="icon-microwave" /> Microwave
+            <Icon className={css.featureIcon} name="icon-microwave" /> Microwave
           </li>
         )}
         {gas && (
           <li className={css.featureItem}>
-            <Icon name="icon-gas" /> Gas
+            <Icon className={css.featureIcon} name="icon-gas" /> Gas
           </li>
         )}
         {water && (
@@ -95,38 +95,38 @@ export default function Features({ camper }: FeaturesProps) {
       <ul className={css.specsList}>
         {form && (
           <li className={css.specsItem}>
-            <span className={css.label}>Form:</span>
-            <span className={css.value}>{form}</span>
+            <p className={css.label}>Form:</p>
+            <p className={css.value}>{form}</p>
           </li>
         )}
         {length && (
           <li className={css.specsItem}>
-            <span className={css.label}>Length:</span>
-            <span className={css.value}>{length}</span>
+            <p className={css.label}>Length:</p>
+            <p className={css.value}>{length}</p>
           </li>
         )}
         {width && (
           <li className={css.specsItem}>
-            <span className={css.label}>Width:</span>
-            <span className={css.value}>{width}</span>
+            <p className={css.label}>Width:</p>
+            <p className={css.value}>{width}</p>
           </li>
         )}
         {height && (
           <li className={css.specsItem}>
-            <span className={css.label}>Height:</span>
-            <span className={css.value}>{height}</span>
+            <p className={css.label}>Height:</p>
+            <p className={css.value}>{height}</p>
           </li>
         )}
         {tank && (
           <li className={css.specsItem}>
-            <span className={css.label}>Tank:</span>
-            <span className={css.value}>{tank}</span>
+            <p className={css.label}>Tank:</p>
+            <p className={css.value}>{tank}</p>
           </li>
         )}
         {consumption && (
           <li className={css.specsItem}>
-            <span className={css.label}>Consumption:</span>
-            <span className={css.value}>{consumption}</span>
+            <p className={css.label}>Consumption:</p>
+            <p className={css.value}>{consumption}</p>
           </li>
         )}
       </ul>

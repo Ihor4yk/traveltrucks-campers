@@ -28,13 +28,13 @@ export default function CamperDetails({ camper }: CamperDetailsProps) {
         <div className={css.meta}>
           <div className={css.rating}>
             <Icon name="icon-rating" className={css.ratingIcon} />
-            <span className={css.ratingText}>
+            <p className={css.ratingText}>
               {rating} ({reviews.length} Reviews)
-            </span>
+            </p>
           </div>
           <div className={css.location}>
             <Icon name="icon-map" className={css.mapIcon} />
-            <span className={css.locationText}>{location}</span>
+            <p className={css.locationText}>{location}</p>
           </div>
         </div>
 

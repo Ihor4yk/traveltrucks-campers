@@ -30,7 +30,7 @@ export default function Reviews({ reviews }: ReviewsProps) {
             <div className={css.header}>
               <div className={css.avatar}>{initial}</div>
               <div className={css.info}>
-                <span className={css.name}>{review.reviewer_name}</span>
+                <p className={css.name}>{review.reviewer_name}</p>
                 <div className={css.stars}>{renderStars(review.reviewer_rating)}</div>
               </div>
             </div>

@@ -1,16 +1,20 @@
 .header {
-  width: 1440px;
-  display: flex;
-  align-items: center;
+  width: 100%;
   background-color: #F2F4F7;
-  padding-left: 64px;
 }
 
 .container {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.content {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 724px;
+  width: 788px;
+  padding-left: 64px;
 }
 
 .logo {

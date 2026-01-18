@@ -12,6 +12,7 @@ interface Filters {
   location: string;
   equipment: EquipmentKey[];
   vehicleType: Camper["form"] | "";
+  transmission?: "automatic";
 }
 
 interface CampersStore {
@@ -27,6 +28,7 @@ interface CampersStore {
   setLocation: (value: string) => void;
   toggleEquipment: (value: EquipmentKey) => void;
   setVehicleType: (value: Camper["form"] | "") => void;
+  setTransmission: (value?: "automatic") => void;
 
   toggleFavorite: (id: string) => void;
   isFavorite: (id: string) => boolean;
@@ -48,15 +50,21 @@ export const useCampersStore = create<CampersStore>()(
         location: "",
         equipment: [],
         vehicleType: "",
+        transmission: undefined,
       },
 
       favorites: [],
 
-      setLocation: value => set(state => ({ filters: { ...state.filters, location: value } })),
+      // -------- filters setters --------
+      setLocation: value =>
+        set(state => ({
+          filters: { ...state.filters, location: value },
+        })),
 
       toggleEquipment: value =>
         set(state => {
           const exists = state.filters.equipment.includes(value);
+
           return {
             filters: {
               ...state.filters,
@@ -67,7 +75,14 @@ export const useCampersStore = create<CampersStore>()(
           };
         }),
 
-      setVehicleType: value => set(state => ({ filters: { ...state.filters, vehicleType: value } })),
+      setVehicleType: value =>
+        set(state => ({
+          filters: { ...state.filters, vehicleType: value },
+        })),
+
+      setTransmission: (value?: "automatic") => set(state => ({ filters: { ...state.filters, transmission: value } })),
+
+      // -------- favorites --------
 
       toggleFavorite: id =>
         set(state => ({
@@ -78,11 +93,18 @@ export const useCampersStore = create<CampersStore>()(
 
       isFavorite: id => get().favorites.includes(id),
 
+      // -------- fetch --------
+
       fetchCampers: async (reset = false) => {
         const { filters, page } = get();
 
         if (reset) {
-          set({ isLoading: true });
+          set({
+            isLoading: true,
+            campers: [],
+            page: 1,
+            hasSearched: true,
+          });
         } else {
           set({ isLoadingMore: true });
         }
@@ -95,6 +117,7 @@ export const useCampersStore = create<CampersStore>()(
           location: filters.location,
           vehicleType: filters.vehicleType,
           equipment: filters.equipment,
+          transmission: filters.transmission,
         });
 
         set(state => ({
@@ -103,7 +126,6 @@ export const useCampersStore = create<CampersStore>()(
           total: data.total,
           isLoading: false,
           isLoadingMore: false,
-          hasSearched: reset && data.items.length === 0,
         }));
       },
     }),

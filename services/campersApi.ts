@@ -1,13 +1,5 @@
-import { Camper, CampersResponse } from "@/types/camper";
+import { Camper, CampersResponse, GetCampersParams } from "@/types/camper";
 import { api } from "./api";
-
-interface GetCampersParams {
-  page?: number;
-  limit?: number;
-  location?: string;
-  vehicleType?: string;
-  equipment?: string[];
-}
 
 export const getCampers = async ({
   page = 1,
@@ -15,12 +7,14 @@ export const getCampers = async ({
   location,
   vehicleType,
   equipment,
+  transmission,
 }: GetCampersParams): Promise<{ items: Camper[]; total: number }> => {
   const baseParams = {
     page,
     limit,
     ...(location ? { location } : {}),
     ...(vehicleType ? { form: vehicleType } : {}),
+    ...(transmission ? { transmission } : {}),
   };
 
   const equipmentParams: Record<string, boolean> = {};
